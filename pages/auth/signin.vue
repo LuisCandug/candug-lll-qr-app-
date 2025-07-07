@@ -53,6 +53,7 @@
 <script>
 export default {
   layout: "auth",
+  middleware: 'guest',
   methods: {
     togglePassword() {
       this.visible = !this.visible
