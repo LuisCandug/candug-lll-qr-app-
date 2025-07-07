@@ -40,7 +40,7 @@
         size="large"
         variant="tonal"
         block
-        @click="signInWithGoogle"
+        @click="signInWithGoogle()"
       >
         Sign in with Google
       </v-btn>
@@ -48,23 +48,18 @@
   </div>
 </template>
 
+
+
 <script>
 export default {
-  data() {
-    return {
-      visible: false
-    }
-  },
+  layout: "auth",
   methods: {
     togglePassword() {
       this.visible = !this.visible
     },
     signInWithGoogle() {
-      this.$auth.loginWith('google', {
-        params: {
-          prompt: 'select_account'
-        }
-      })
+      this.$auth.loginWith('google')
+      this.$auth.loginWith('google', { params: { prompt: 'select_account' } })
     }
   }
 }

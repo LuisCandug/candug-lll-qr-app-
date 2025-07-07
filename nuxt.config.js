@@ -37,20 +37,36 @@ export default {
   },
 
   auth: {
+    //options
+    redirect: {
+      login: '/auth/signin',
+      logout: '/auth/signin',
+      callback: '/auth/callback',
+      home: '/'
+    },
+    autoFetchUser: false,
     strategies: {
       google: {
         clientId: '70577645905-50j187224p7mdr9hga4u9l1rbbte8svd.apps.googleusercontent.com',
-        codeChallengeMethod: '', // Or 'S256' if supported by your backend
-        responseType: 'code',   // Required for backend-based flow
-        redirectUri: 'http://localhost:3000', // Must match your Google Cloud redirect URI
-
+        scheme: 'oauth2',
         endpoints: {
-          token: 'http://localhost:8000/user/google/',   // Backend endpoint to exchange code for token
-          userInfo: 'http://localhost:8000/auth/user/'   // Backend endpoint to get user info after login
-        }
+          authorization: 'https://accounts.google.com/o/oauth2/auth',  
+          userInfo: 'https://www.googleapis.com/oauth2/v3/userinfo'   
+        },
+        token: {
+          property: "access_token",
+          type: "Bearer",
+          maxAge: 1800,
+        },
+        responseType: "token id_token",
+        scope: ["openid","profile","email"],
+        redirectUri: 'http://localhost:3000/auth/callback', // Must match your Google Cloud redirect URI
+        codeChallengeMethod: '', // Or 'S256' if supported by your backend
       }
     }
   },
+
+
 
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
