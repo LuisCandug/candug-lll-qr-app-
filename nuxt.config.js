@@ -18,7 +18,9 @@ export default {
 
   css: [],
 
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/html5-qrcode.client.js', mode: 'client' } // ✅ Added plugin
+  ],
 
   components: true,
 
@@ -32,12 +34,11 @@ export default {
   ],
 
   axios: {
-    baseURL: 'http://localhost:8000', // Your backend API base URL
+    baseURL: 'http://localhost:8000',
     credentials: true
   },
 
   auth: {
-    //options
     redirect: {
       login: '/auth/signin',
       logout: '/auth/signin',
@@ -50,23 +51,21 @@ export default {
         clientId: '70577645905-50j187224p7mdr9hga4u9l1rbbte8svd.apps.googleusercontent.com',
         scheme: 'oauth2',
         endpoints: {
-          authorization: 'https://accounts.google.com/o/oauth2/auth',  
-          userInfo: 'https://www.googleapis.com/oauth2/v3/userinfo'   
+          authorization: 'https://accounts.google.com/o/oauth2/auth',
+          userInfo: 'https://www.googleapis.com/oauth2/v3/userinfo'
         },
         token: {
-          property: "access_token",
-          type: "Bearer",
-          maxAge: 1800,
+          property: 'access_token',
+          type: 'Bearer',
+          maxAge: 1800
         },
-        responseType: "token id_token",
-        scope: ["openid","profile","email"],
-        redirectUri: 'http://localhost:3000/auth/callback', // Must match your Google Cloud redirect URI
-        codeChallengeMethod: '', // Or 'S256' if supported by your backend
+        responseType: 'token id_token',
+        scope: ['openid', 'profile', 'email'],
+        redirectUri: 'http://localhost:3000/auth/callback',
+        codeChallengeMethod: ''
       }
     }
   },
-
-
 
   vuetify: {
     customVariables: ['~/assets/variables.scss'],

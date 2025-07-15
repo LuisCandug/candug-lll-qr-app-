@@ -70,6 +70,13 @@
           >
             Continue
           </v-btn>
+          <v-btn
+            color="success"
+            nuxt
+            to="/scan"
+          >
+            Scan QR Code
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-col>
