@@ -111,12 +111,7 @@ export default {
         },
         {
           icon: 'mdi-account',
-          title: 'Sign-in',
-          to: '/auth/signin'
-        },
-        {
-          icon: 'mdi-account',
-          title: 'QR',
+          title: 'QR-SCANNER',
           to: '/scan'
         }
       ],
